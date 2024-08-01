@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+<h4>{{publishedDate}}</h4>
+<p>{{{content}}}</p>
+
+<h1>Invoices</h1>
+
+<table style="width: 100%;">
+  <thead>
+    <tr style="font-weight: 600;">
+      <td>ID</td>
+      <td>Name</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each invoices}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.title}}</td>
+        <td><a href="/invoice/{{this.id}}">Open</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

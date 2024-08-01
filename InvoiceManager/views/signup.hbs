@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+    <h1>Sign up</h1>
+
+    <form action="/signup" method="post">
+      <div class="mb-3">
+        <label for="usename" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="usename"
+          name="username"
+          autocomplete="username"
+          required
+          autofocus
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          class="form-control"
+          type="password"
+          autocomplete="password"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="rpassword" class="form-label">Repeat password</label>
+        <input
+          id="rpassword"
+          name="rpassword"
+          class="form-control"
+          type="rpassword"
+          autocomplete="rpassword"
+          required
+        />
+      </div>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <button type="submit" class="btn btn-primary">Sign up</button>
+      <a href="/login" class="btn btn-link">Sign in</a>
+    </form>
+
+  </div>
+</div>

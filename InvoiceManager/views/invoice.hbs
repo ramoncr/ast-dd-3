@@ -1,0 +1,10 @@
+{{#if invoice}}
+  <h1>{{invoice.title}}</h1>
+  <h4>{{invoice.publishedDate}}</h4>
+  <p>{{{invoice.content}}}</p>
+{{else}}
+  <h1>Could not find invoice</h1>
+{{/if}}
+
+
+{{this.data}}    

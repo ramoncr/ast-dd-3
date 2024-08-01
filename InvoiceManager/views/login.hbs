@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <h1>Sign in</h1>
+    <form action="/login/password" method="post">
+      <div class="mb-3">
+        <label for="usename" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="usename"
+          name="username"
+          autocomplete="username"
+          required
+          autofocus
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          class="form-control"
+          type="password"
+          autocomplete="password"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      <a href="/signup" class="btn btn-link">Sign up</a>
+    </form>
+  </div>
+</div>

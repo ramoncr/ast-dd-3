@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: InvoiceApp
+    image: invoice-app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    environment:
+        - PORT=8888
+    ports:
+      - "${PORT}:${PORT}"
