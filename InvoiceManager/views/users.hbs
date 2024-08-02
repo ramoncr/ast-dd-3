@@ -1,1 +1,18 @@
-{{data}}
+<table style="width: 100%;" class="table">
+  <thead>
+    <tr style="font-weight: 600;">
+      <td>ID</td>
+      <td>Username</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.username}}</td>
+        <td><a href="/users/{{this.id}}">Open</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
