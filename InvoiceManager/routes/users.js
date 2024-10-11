@@ -15,6 +15,18 @@ router.get('/:id', async function(req, res, next) {
   res.render('user', { ...user, isAdmin: user.isAdmin == 1, disableInputs: req.user.isAdmin == 0 });
 });
 
+/* DELETE user by id */
+router.get('/delete/:id', async function(req, res, next) {
+  db.users.destroy({ where: { id: req.params.id }});
+  res.redirect('/users');
+});
+
+/* GET user by username. */
+router.get('/byusername/:username', async function(req, res, next) {
+  const users = await db.users.findAll({ where: { username: req.params.username }, raw: true });
+  res.json(users);
+});
+
 /* POST user by id. */
 router.post('/:id', async function(req, res, next) { 
   const body = req.body;
