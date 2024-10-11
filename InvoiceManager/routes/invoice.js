@@ -20,7 +20,13 @@ router.get("/:invoiceNumber", async function (req, res, next) {
 });
 
 router.get("/", async function (req, res, next) {
-  const invoices = await db.invoices.findAll();
+  const filter = {};
+
+  if(req.userId){
+    filter.userId = req.userId;
+  }
+
+  const invoices = await db.invoices.findAll(filter);
   res.render("invoices", { invoices });
 });
 
@@ -52,17 +58,24 @@ router.post("/filter", function (req, res, next) {
 });
 
 router.post("/search", async function (req, res, next) {
-  const searchText = req.body.searchText;
+  try {
+    const searchText = req.body.searchText;
 
-  const [result, metadata] = await sequelize.query(
-    `SELECT * FROM invoices WHERE content LIKE '${searchText}'`
-  );
-
-  if (result) {
-    res.render("invoice", result);
-  } else {
-    res.render("invoice", null);
+    const [result, metadata] = await db.sequelize.query(
+      `SELECT * FROM invoices WHERE title LIKE '%${searchText}%' OR description LIKE '%${searchText}%'`
+    );
+  
+    console.log(result);
+  
+    if (result) {
+      res.render("invoices", {invoices: result, searchText});
+    } else {
+      res.render("invoices", null);
+    }
+  } catch(error) {
+    res.status(500).send(error);
   }
+ 
 });
 
 router.post("/", async function (req, res, next) {

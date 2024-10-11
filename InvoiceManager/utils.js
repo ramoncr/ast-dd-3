@@ -57,5 +57,23 @@ function ensureAuthenticatedRequest() {
   };
 }
 
+function ensureAuthenticatedAndAdminRequest() {
+  return function _isAuthenticated (req, res, next) {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+        console.log(req.originalUrl);
 
-module.exports = { generateRandomString, formatDate, merge, shuffleArray, generateUniqueId, ensureAuthenticatedRequest }
+      if (!req.originalUrl.includes("/export")) {
+        return res.redirect("/login");
+      }
+    }
+
+    if(!req.user.isAdmin) {
+      return res.redirect("/");
+    }
+
+    return next();
+  };
+}
+
+
+module.exports = { generateRandomString, formatDate, merge, shuffleArray, generateUniqueId, ensureAuthenticatedRequest, ensureAuthenticatedAndAdminRequest }

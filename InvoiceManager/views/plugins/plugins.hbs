@@ -1,0 +1,40 @@
+<p>Below you can find a list of plugins that are currently enabled.</p>
+<a href="/plugins/new" class="btn btn-success mb-3">Add Plugin</a>
+
+<div class="row">
+
+  <div class="col">
+
+    <div class="card">
+      <div class="card-header">
+        Default Plugin
+      </div>
+      <div class="card-body">
+        <p>This plugin is always present and is the default plugin. It enables
+          all the other plugins so please leave it be.</p>
+        <p><strong>Version:</strong> 1.0.2</p>
+        <p><strong>Location:</strong> /default.js</p>
+        <p><strong>Active:</strong> yes</p>
+        <button class="btn btn-danger" disabled>Disable</button>
+      </div>
+    </div>
+  </div>
+  {{#each plugins}}
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          {{name}}
+        </div>
+        <div class="card-body">
+          <p>{{description}}</p>
+          <p><strong>Version:</strong>{{version}}</p>
+          <p><strong>Location:</strong> {{storageLocation}}</p>
+          <p><strong>Active:</strong> {{isActive}}</p>
+          <button class="btn btn-danger" disabled>Disable</button>
+          <a class="btn btn-primary" href="/plugins/attach/{{id}}" >Re-attach</a>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+</div>

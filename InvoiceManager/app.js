@@ -14,8 +14,8 @@ const pdfRouter = require("./routes/api/export");
 const ccRouter = require("./routes/api/cc");
 const authRouter = require("./routes/auth");
 const notificationsRouter = require("./routes/api/notifications");
-const pluginsRouter = require("./routes/api/plugins");
-const { ensureAuthenticatedRequest } = require("./utils");
+const pluginsRouter = require("./routes/plugins");
+const { ensureAuthenticatedRequest, ensureAuthenticatedAndAdminRequest } = require("./utils");
 
 // Setup database
 const db = require("./models/");
@@ -61,7 +61,7 @@ app.use("/invoice", ensureAuthenticatedRequest(), invoiceRouter);
 app.use("/api/export", ensureAuthenticatedRequest(), pdfRouter);
 app.use('/api/notifications', ensureAuthenticatedRequest(), notificationsRouter);
 app.use("/api/cc", ensureAuthenticatedRequest(), ccRouter);
-app.use("/api/plugins", ensureAuthenticatedRequest(), pluginsRouter);
+app.use("/plugins", ensureAuthenticatedAndAdminRequest(), pluginsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

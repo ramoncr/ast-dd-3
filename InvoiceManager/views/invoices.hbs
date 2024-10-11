@@ -2,7 +2,30 @@
 <h4>{{publishedDate}}</h4>
 <p>{{{content}}}</p>
 
-<h1>Invoices</h1>
+<div class="row">
+  <div class="col">
+    <h1>Invoices</h1>
+
+  </div>
+  <div class="col-4">
+    <form action="/invoice/search" method="POST">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search for invoices"
+          name="searchText"
+          value="{{searchText}}"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          id="button-search-invoices"
+        >Search</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <table style="width: 100%;" class="table">
   <thead>

@@ -1,0 +1,28 @@
+<form action="/plugins" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Name</label>
+    <input type="text" class="form-control" id="inputName" name="name" />
+  </div>
+
+  <div class="mb-3">
+    <label for="inputVersion" class="form-label">Version</label>
+    <input type="text" class="form-control" id="inputVersion" name="version" />
+  </div>
+
+  <div class="mb-3">
+    <label for="inputDescription" class="form-label">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputDescription"
+      name="description"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="formFile" class="form-label">File</label>
+    <input class="form-control" type="file" id="formFile" name="plugins" accept=".js" />
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-2">Create</button>
+</form>
