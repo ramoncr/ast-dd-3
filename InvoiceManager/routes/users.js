@@ -6,13 +6,13 @@ const db = require('./../models')
 router.get('/', async function(req, res, next) {
   const users = await db.users.findAll({ raw: true});
   console.log(users);
-  res.render('users', { users });
+  res.render('user/users', { users });
 });
 
 /* GET user by id. */
 router.get('/:id', async function(req, res, next) {
   const user = await db.users.findByPk(req.params.id, { raw: true });
-  res.render('user', { ...user, isAdmin: user.isAdmin == 1, disableInputs: req.user.isAdmin == 0 });
+  res.render('user/user', { ...user, isAdmin: user.isAdmin == 1, disableInputs: req.user.isAdmin == 0 });
 });
 
 /* DELETE user by id */

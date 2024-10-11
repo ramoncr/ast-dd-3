@@ -13,9 +13,9 @@ router.get("/:invoiceNumber", async function (req, res, next) {
   });
 
   if (matchedInvoices.length == 1) {
-    res.render("invoice", { invoice: matchedInvoices[0] });
+    res.render("invoice/invoice", { invoice: matchedInvoices[0] });
   } else {
-    res.render("invoice", { invoice: null });
+    res.render("invoice/invoice", { invoice: null });
   }
 });
 
@@ -27,7 +27,7 @@ router.get("/", async function (req, res, next) {
   }
 
   const invoices = await db.invoices.findAll(filter);
-  res.render("invoices", { invoices });
+  res.render("invoice/invoices", { invoices });
 });
 
 /**
@@ -47,13 +47,13 @@ router.post("/filter", function (req, res, next) {
     })
     .then((data) => {
       if (data) {
-        res.render("invoices", { invoices: data });
+        res.render("invoice/invoices", { invoices: data });
       } else {
-        res.render("invoices", { invoices: [] });
+        res.render("invoice/invoices", { invoices: [] });
       }
     })
     .catch((err) => {
-      res.render("invoices", { invoices: [] });
+      res.render("invoice/invoices", { invoices: [] });
     });
 });
 
@@ -68,9 +68,9 @@ router.post("/search", async function (req, res, next) {
     console.log(result);
   
     if (result) {
-      res.render("invoices", {invoices: result, searchText});
+      res.render("invoice/invoices", {invoices: result, searchText});
     } else {
-      res.render("invoices", null);
+      res.render("invoice/invoices", null);
     }
   } catch(error) {
     res.status(500).send(error);
